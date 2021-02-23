@@ -65,7 +65,7 @@ public class Listener implements org.bukkit.event.Listener {
         int chunkZ = e.getZ();
         File areaSchematic = new File(LandsRestorer.plugin.getDataFolder().getAbsolutePath() + "/regionsaves/" + chunkX + "-" + chunkZ + ".schem");
 
-        Bukkit.getScheduler().runTask(LandsRestorer.plugin, () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(LandsRestorer.plugin, () -> {
             Clipboard clipboard = null;
             ClipboardFormat format = ClipboardFormats.findByFile(areaSchematic);
             try (ClipboardReader reader = format.getReader(new FileInputStream(areaSchematic))) {
